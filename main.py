@@ -16,4 +16,8 @@ async def on_ready():
 async def hello(ctx):
     await ctx.send("Hello back!")
 
-client.run('MTE5NjQ4Mjk0ODU5NDE1OTcwNg.GNbuk2.PvNAw4V3o1s-QZy_dKrGZUk_rXnqnEcOBuS9sU')
+with open("../dct/dct.txt", "r") as file:
+    token = file.read().strip()
+    print(token)
+
+client.run(token)
