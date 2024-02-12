@@ -39,25 +39,81 @@ async def bye(ctx):
     await ctx.send("Bye Bye!")
 
 
+# @client.command()
+# async def getCar1(ctx):
+#     # Öffnen der Textdatei und Lesen des API-Schlüssels
+#     with open("../keys/rapidApiKey.txt", "r") as key_file:
+#         api_key = key_file.read().strip()
+        
+#     url = "https://dealerkit.p.rapidapi.com/api/get-vin/"
+
+#     querystring = {"vin": "4F2YU09161KM33122", "format": "json"}
+
+#     headers = {
+#         "X-RapidAPI-Key": api_key,
+#         "X-RapidAPI-Host": "dealerkit.p.rapidapi.com"
+#     }
+
+#     response = requests.get(url, headers=headers, params=querystring)
+
+#     print(response.json())
+
+#     await ctx.send(response.json())
+
+####
 @client.command()
-async def getCar(ctx):
-    url = "https://dealerkit.p.rapidapi.com/api/get-vin/"
+async def getcar(ctx):
+        
+    # url = "http://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleTypesForMakeId/412?format=json"
+    url = "http://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json"
 
-    querystring = {"vin": "4F2YU09161KM33122", "format": "json"}
+    response = requests.get(url)
 
-    headers = {
-        "X-RapidAPI-Key": "SIGN-UP-FOR-KEY",
-        "X-RapidAPI-Host": "dealerkit.p.rapidapi.com"
-    }
+    data = response.json()
 
-    response = requests.get(url, headers=headers, params=querystring)
+    # Überprüfen, ob die Antwort erfolgreich war
+    if 'Results' in data:
+        # Liste der IDs aus den Ergebnissen extrahieren
+        ids = [result['Make_ID'] for result in data['Results']]
 
-    print(response.json())
+        # IDs aufsteigend sortieren
+        sorted_ids = sorted(ids)
+        print(f"Alle IDs aufsteigend: {sorted_ids}")
+        print(f"Größe des Arrays: {len(sorted_ids)}")
+    else:
+        print("Fehler bei der Abfrage der Daten")
 
-    await ctx.send(response.json())
+####
+@client.command()
+async def getcarminid(ctx):
 
-with open("../dct/dct.txt", "r") as file:
+    # url = "http://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleTypesForMakeId/412?format=json"
+    url = "http://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json"
+
+    response = requests.get(url)
+
+    data = response.json()
+
+    # Überprüfen, ob die Antwort erfolgreich war
+    if 'Results' in data:
+        # Liste der IDs aus den Ergebnissen extrahieren
+        ids = [result['Make_ID'] for result in data['Results']]
+
+        # Die kleinste ID finden
+        min_id = min(ids)
+
+        print(f"Die kleinste ID ist: {min_id}")
+    else:
+        print("Fehler bei der Abfrage der Daten")
+
+
+#---RUN------------------------------------------------------------------------------------
+with open("../keys/dct.txt", "r") as file:
     token = file.read().strip()
     print(token)
+    
+    
 
 client.run(token)
+
+
