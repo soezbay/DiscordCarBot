@@ -87,8 +87,7 @@ async def getcar(ctx):
 @client.command()
 async def getcarminid(ctx):
 
-    # url = "http://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleTypesForMakeId/412?format=json"
-    url = "http://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json"
+    url = "http://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleTypesForMakeId/412?format=json"
 
     response = requests.get(url)
 
