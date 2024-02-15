@@ -30,20 +30,23 @@ async def getcar(ctx):
         all_models = json.load(file)
 
     # Wähle ein zufälliges Modell aus
-    selected_model = random.choice(all_models)
+    selected_entry = random.choice(all_models)
+
+    # Entnimm das "Models" Array des ausgewählten Eintrags
+    selected_models = selected_entry["Models"]["Results"]
 
     # Entferne das ausgewählte Modell aus allmodels.json
-    all_models.remove(selected_model)
+    all_models.remove(selected_entry)
 
-    # Speichere das ausgewählte Modell in takenModels.json
-    with open("takenModels.json", "a") as taken_file:
-        json.dump(selected_model, taken_file, indent=4)
-
-    # Aktualisiere allmodels.json
+    # Speichere das aktualisierte allmodels.json
     with open("allmodels.json", "w") as file:
         json.dump(all_models, file, indent=4)
 
-    await ctx.send(f"Das ausgewählte Modell ist: {selected_model['Models']['Results'][0]['Model_Name']}")
+    # Speichere das ausgewählte Modell in takenModels.json
+    with open("takenModels.json", "a") as taken_file:
+        json.dump(selected_entry, taken_file, indent=4)
+
+    await ctx.send(f"Die ausgewählten Modelle sind: {', '.join([model['Model_Name'] for model in selected_models])}")
 
 #---RUN------------------------------------------------------------------------------------
 with open("../keys/dct.txt", "r") as file:
