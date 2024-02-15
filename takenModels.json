@@ -1,0 +1,80 @@
+[
+    {
+        "Make_ID": 7109,
+        "Make_Name": "JOHNSON'S WELDING",
+        "Model_ID": 18940,
+        "Model_Name": "JOHNSON'S WELDING"
+    },
+    {
+        "Make_ID": 11659,
+        "Make_Name": "SASQUATCH III",
+        "Model_ID": 30190,
+        "Model_Name": "SASQUATCH III"
+    },
+    {
+        "Make_ID": 5157,
+        "Make_Name": "Custom Chassis Inc.",
+        "Model_ID": 12953,
+        "Model_Name": "Prairie"
+    },
+    {
+        "Make_ID": 5189,
+        "Make_Name": "Hogfather Trailers",
+        "Model_ID": 13073,
+        "Model_Name": "Hogfather Trailers"
+    },
+    {
+        "Make_ID": 8520,
+        "Make_Name": "Sage Pump Services, LLC",
+        "Model_ID": 22465,
+        "Model_Name": "Sage Pump Services, LLC"
+    },
+    {
+        "Make_ID": 2721,
+        "Make_Name": "Hirons Memorial Works",
+        "Model_ID": 6638,
+        "Model_Name": "Hirons Memorial Works"
+    },
+    {
+        "Make_ID": 10195,
+        "Make_Name": "Buckeye Truck Equipment Inc.",
+        "Model_ID": 26515,
+        "Model_Name": "Buckeye Truck Equipment Inc."
+    },
+    {
+        "Make_ID": 11704,
+        "Make_Name": "Hamfg",
+        "Model_ID": 30268,
+        "Model_Name": "Hamfg"
+    },
+    {
+        "Make_ID": 4162,
+        "Make_Name": "Oldsmobile",
+        "Model_ID": 9068,
+        "Model_Name": "Cutlass"
+    },
+    {
+        "Make_ID": 3907,
+        "Make_Name": "McCartney Trailers",
+        "Model_ID": 8538,
+        "Model_Name": "McCartney Trailers"
+    },
+    {
+        "Make_ID": 3437,
+        "Make_Name": "Village Trailer Sales and Parts",
+        "Model_ID": 7740,
+        "Model_Name": "Village Trailers Sales and Parts"
+    },
+    {
+        "Make_ID": 1170,
+        "Make_Name": "Bil-Jax",
+        "Model_ID": 5630,
+        "Model_Name": "Bil-Jax"
+    },
+    {
+        "Make_ID": 2990,
+        "Make_Name": "Red Baron Motors",
+        "Model_ID": 24883,
+        "Model_Name": "Enclosed Body"
+    }
+]

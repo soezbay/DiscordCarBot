@@ -38,11 +38,25 @@ async def getcar(ctx):
     with open("allmodels.json", "w") as file:
         json.dump(all_models, file, indent=4)
 
-    # Speichere das ausgewählte Modell in takenModels.json
-    with open("takenModels.json", "a") as taken_file:
-        json.dump(selected_model, taken_file, indent=4)
+    # Lade bisherige Modelle aus takenModels.json, wenn die Datei vorhanden ist
+    taken_models = []
+    try:
+        with open("takenModels.json", "r") as taken_file:
+            taken_models = json.load(taken_file)
+    except FileNotFoundError:
+        pass
 
-    await ctx.send(f"Das ausgewählte Modell ist: {selected_model['Model_Name']}")
+    # Füge das ausgewählte Modell zur Liste der genommenen Modelle hinzu
+    taken_models.append(selected_model)
+
+    # Speichere die Liste der genommenen Modelle in takenModels.json
+    with open("takenModels.json", "w") as taken_file:
+        json.dump(taken_models, taken_file, indent=4)
+
+    await ctx.send(
+        f"Modell: {selected_model['Model_Name']} \n" +
+        f"Firma: {selected_entry['Make_Name']}"
+        )
 
 #---RUN------------------------------------------------------------------------------------
 with open("../keys/dct.txt", "r") as file:
