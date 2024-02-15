@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 from discord import Intents
 import json
-import requests
 import random
 
 intents = Intents.default()
@@ -16,37 +15,34 @@ async def on_ready():
     print("The bot is ready to use!")
     print("=========================")
 
-
 @client.event
 async def on_member_join(member):
     channel = client.get_channel(976637572807786569)
     await member.send("Hi Mr. ")
 
-###
 @client.command()
 async def getcar(ctx):
     # Lade Daten aus allmodels.json
     with open("allmodels.json", "r") as file:
         all_models = json.load(file)
 
-    # Wähle ein zufälliges Modell aus
+    # Wähle ein zufälliges Modell aus einem zufälligen Eintrag aus
     selected_entry = random.choice(all_models)
-
-    # Entnimm das "Models" Array des ausgewählten Eintrags
     selected_models = selected_entry["Models"]["Results"]
+    selected_model = random.choice(selected_models)
 
-    # Entferne das ausgewählte Modell aus allmodels.json
-    all_models.remove(selected_entry)
+    # Entferne das ausgewählte Modell aus dem "Models" Array
+    selected_models.remove(selected_model)
 
-    # Speichere das aktualisierte allmodels.json
+    # Speichere die aktualisierten Daten in allmodels.json
     with open("allmodels.json", "w") as file:
         json.dump(all_models, file, indent=4)
 
     # Speichere das ausgewählte Modell in takenModels.json
     with open("takenModels.json", "a") as taken_file:
-        json.dump(selected_entry, taken_file, indent=4)
+        json.dump(selected_model, taken_file, indent=4)
 
-    await ctx.send(f"Die ausgewählten Modelle sind: {', '.join([model['Model_Name'] for model in selected_models])}")
+    await ctx.send(f"Das ausgewählte Modell ist: {selected_model['Model_Name']}")
 
 #---RUN------------------------------------------------------------------------------------
 with open("../keys/dct.txt", "r") as file:
@@ -54,5 +50,3 @@ with open("../keys/dct.txt", "r") as file:
     print(token)
 
 client.run(token)
-
-
